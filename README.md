@@ -53,3 +53,13 @@ int number = 5;  // 0101
 int toggle = 1 << 1;  // toggle: 0010
 number = number ^ toggle;  // Kết quả: 0111 (7)
 ```
+**Bit field** 
+Bit field giúp chỉ định số bit cần sử dụng mà không cần dùng hết số lượng bit của 1 kiểu dữ liệu.
+```c
+struct {
+    unsigned int is_on : 1;  // Chỉ dùng 1 bit cho is_on
+    unsigned int value : 4;  // Dùng 4 bit cho value
+} status;
+```
+**Chú ý**: Thông thường khi dùng bit field cần đi chung với struct hoặc union để nhóm các biến lại với nhau với cùng không gian bộ nhớ.
+Nếu không có struct hoặc union, không có cách nào để bảo đảm rằng các trường này sẽ chia sẻ chung 1 byte và sử dụng chỉ một phần của byte đó.
