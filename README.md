@@ -739,3 +739,136 @@ int main() {
 - Tốc độ truy cập của stack nhanh hơn heap do quản lý đơn giản hơn
 - Kích thước của stack bị giới hạn khi chạy chương trình nhưng heap có thể linh động hơn.
 - Bộ nhớ stack được thu hồi khi ra khỏi phạm vi còn heap phải thu hồi bộ nhớ thủ công(free).
+# JSON
+JSON (JavaScript Object Notation) là một định dạng dữ liệu nhẹ, dễ đọc và dễ viết cho con người, đồng thời dễ dàng cho máy móc phân tích. Nó thường được sử dụng trong các ứng dụng web để trao đổi dữ liệu giữa client và server, giúp truyền tải thông tin một cách hiệu quả.
+**Các đặc điểm của JSON:**
+JSON sử dụng cú pháp bao gồm các cặp khóa-giá trị.
+Ví dụ:
+```json
+{
+    "name": "Alice",
+    "age": 30,
+    "city": "New York"
+}
+```
+**Hỗ trợ nhiều kiểu dữ liệu:**
+**String**: Chuỗi ký tự.
+**Number**: Số (cả số nguyên và số thực).
+**Boolean**: Giá trị đúng hoặc sai (true hoặc false).
+**Array**: Danh sách các giá trị, có thể chứa bất kỳ kiểu dữ liệu nào.
+**Object**: Một đối tượng chứa các cặp khóa-giá trị.
+**Null**: Giá trị không xác định.
+Ví dụ:
+```json
+{
+    "name": "Alice",
+    "age": 30,
+    "isStudent": false,
+    "courses": ["Math", "Science", "History"],
+    "address": {
+        "street": "123 Main St",
+        "city": "New York"
+    },
+    "phone": null
+}
+```
+**Dễ dàng truyền dữ liệu**: JSON thường được sử dụng trong giao thức HTTP để truyền tải dữ liệu giữa server và client, thường thông qua AJAX hoặc API.
+**Ngôn ngữ độc lập**: Mặc dù JSON được phát triển từ JavaScript, nó có thể được sử dụng với nhiều ngôn ngữ lập trình khác nhau như Python, Java, C#, PHP, v.v.
+# Linked List
+Linked list (danh sách liên kết) là một cấu trúc dữ liệu trong đó các phần tử (node) được liên kết với nhau bằng các con trỏ. Mỗi node bao gồm hai phần chính:
+
+**Dữ liệu**: Chứa giá trị mà node lưu trữ.
+**Con trỏ**: Là tham chiếu (hoặc địa chỉ) tới node tiếp theo trong danh sách.
+## Có ba loại linked list chính:
+
+Singly Linked List (danh sách liên kết đơn): Mỗi node chỉ chứa một con trỏ trỏ đến node tiếp theo.
+Ví dụ:
+```css
+[Data | Next] -> [Data | Next] -> [Data | Next] -> null
+```
+Doubly Linked List (danh sách liên kết đôi): Mỗi node chứa hai con trỏ, một trỏ đến node trước và một trỏ đến node tiếp theo.
+Ví dụ:
+```css
+null <- [Prev | Data | Next] <-> [Prev | Data | Next] <-> [Prev | Data | Next] -> null
+```
+Circular Linked List (danh sách liên kết vòng): Giống linked list đơn hoặc đôi, nhưng node cuối cùng sẽ trỏ lại node đầu tiên, tạo thành một vòng.
+Ví dụ (circular singly linked list):
+```css
+[Data | Next] -> [Data | Next] -> [Data | Next] -> quay lại node đầu tiên
+```
+## Ưu điểm của Linked List:
+Chèn/xóa phần tử dễ dàng hơn so với mảng, đặc biệt là khi cần chèn/xóa giữa danh sách.
+Không cần kích thước cố định ban đầu, có thể thay đổi linh hoạt theo số lượng phần tử.
+## Nhược điểm:
+Truy cập ngẫu nhiên chậm hơn mảng (mảng có thể truy cập trực tiếp thông qua chỉ số, còn linked list phải duyệt từ đầu đến node cần tìm).
+Tiêu tốn bộ nhớ hơn vì cần thêm con trỏ trong mỗi node.
+# Binary Search
+Binary Search (tìm kiếm nhị phân) là một thuật toán tìm kiếm hiệu quả dùng để tìm một phần tử trong danh sách đã được sắp xếp. Thuật toán này hoạt động bằng cách chia đôi danh sách và loại bỏ nửa không chứa phần tử cần tìm.
+
+**Cách hoạt động**:
+Khởi tạo chỉ số left và right để đánh dấu đầu và cuối danh sách.
+Tính chỉ số giữa mid.
+So sánh giá trị tại mid với giá trị cần tìm:
+Nếu bằng, trả về mid.
+Nếu lớn hơn, cập nhật right thành mid - 1.
+Nếu nhỏ hơn, cập nhật left thành mid + 1.
+Lặp lại cho đến khi không còn phần tử để kiểm tra.
+ví dụ
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+void binarySearch(int *arr, int l, int r, int x){
+    while (l <= r)
+    {
+        int mid = l + (r - l)/2;
+        if (arr[mid] == x)
+        {
+            printf("index cua gia tri can tim la %d\n", mid);
+            return;
+        }else if(arr[mid] > x)
+        {
+            r = mid - 1;
+        }else
+        l = mid + 1;
+        
+    }
+    printf("Khong tim thay ket qua\n");
+}
+
+void swap(int *a, int *b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+bubblesort(int *arr, int size){
+    for (int i = 0; i < size -1; i++)
+    {
+        for (int j = 0; j < size -i -1; j++)
+        {
+            if (arr[j] > arr[j+1])
+            {
+                swap(&arr[j], &arr[j+1]);
+            }
+            
+        }
+        
+    }
+    
+}
+
+
+int main(int argc, char const *argv[])
+{
+   int arr[] = {2,31,63,1,2,7,2,56};
+    bubblesort(arr,8);
+    for (int i = 0; i < 8; i++)
+    {
+        
+    printf("%d\n", arr[i]);
+    }
+    binarySearch(&arr,0,8,2);
+    return 0;
+}
+```
