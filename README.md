@@ -1,3 +1,5 @@
+<details>
+<summary>📘 Lesson 8: Struct - Union</summary>
 # Quá trình biên dịch chương trình của Compiler
 ![alt text](image.png)
 ## Tiền xử lý (Preprocessing)
@@ -5,6 +7,7 @@
 **Kết quả**: Mã nguồn đã được mở rộng và chuẩn bị cho bước tiếp theo.
 **Tiền xử lý**
 ```
+    </details>
 gcc -E main.c -o main.i
 ```
 ## Biên dịch (Compilation)
